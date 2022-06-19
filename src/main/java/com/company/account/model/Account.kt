@@ -41,7 +41,6 @@ data class Account(
                 if (balance != other.balance) return false
                 if (creationDate != other.creationDate) return false
                 if (customer != other.customer) return false
-                if (transaction != other.transaction) return false
 
                 return true
         }
