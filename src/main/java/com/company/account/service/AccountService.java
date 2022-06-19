@@ -1,7 +1,7 @@
 package com.company.account.service;
 
 import com.company.account.dto.AccountDto;
-import com.company.account.dto.AccountDtoConverter;
+import com.company.account.dto.converter.AccountDtoConverter;
 import com.company.account.dto.CreateAccountRequest;
 import com.company.account.model.Account;
 import com.company.account.model.Customer;

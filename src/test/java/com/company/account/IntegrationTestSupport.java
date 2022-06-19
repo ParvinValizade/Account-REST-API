@@ -1,6 +1,6 @@
 package com.company.account;
 
-import com.company.account.dto.CustomerDtoConverter;
+import com.company.account.dto.converter.CustomerDtoConverter;
 import com.company.account.repository.CustomerRepository;
 import com.company.account.service.AccountService;
 import com.fasterxml.jackson.databind.ObjectMapper;
