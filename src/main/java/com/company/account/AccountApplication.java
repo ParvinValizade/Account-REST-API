@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.Clock;
 
@@ -39,6 +40,11 @@ public class AccountApplication implements CommandLineRunner {
     @Bean
     public Clock clock() {
         return Clock.systemUTC();
+    }
+
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
     }
 
     @Override
