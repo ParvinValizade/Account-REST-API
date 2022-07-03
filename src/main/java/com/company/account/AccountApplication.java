@@ -1,5 +1,6 @@
 package com.company.account;
 
+import com.company.account.exception.RestTemplateResponseErrorHandler;
 import com.company.account.model.Customer;
 import com.company.account.repository.CustomerRepository;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,9 +20,11 @@ import java.time.Clock;
 public class AccountApplication implements CommandLineRunner {
 
     private final CustomerRepository customerRepository;
+    private final RestTemplateResponseErrorHandler responseErrorHandler;
 
-    public AccountApplication(CustomerRepository customerRepository) {
+    public AccountApplication(CustomerRepository customerRepository, RestTemplateResponseErrorHandler responseErrorHandler) {
         this.customerRepository = customerRepository;
+        this.responseErrorHandler = responseErrorHandler;
     }
 
     public static void main(String[] args) {
@@ -44,7 +48,7 @@ public class AccountApplication implements CommandLineRunner {
 
     @Bean
     public RestTemplate restTemplate(){
-        return new RestTemplate();
+        return new RestTemplateBuilder().errorHandler(responseErrorHandler).build();
     }
 
     @Override
